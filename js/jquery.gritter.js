@@ -110,7 +110,7 @@
 				image = params.image || '',
 				sticky = params.sticky || false,
 				item_class = params.class_name || $.gritter.options.class_name,
-				position = $.gritter.options.position,
+				position = params.position ||$.gritter.options.position,
 				time_alive = params.time || '';
 
 			this._verifyWrapper();
@@ -153,6 +153,10 @@
 			}
 
 			$('#gritter-notice-wrapper').addClass(position).append(tmp);
+			
+			if (position) {
+        		$('#gritter-notice-wrapper>.gritter-item-wrapper').removeClass("gritter-center");
+    		}
 			
 			var item = $('#gritter-item-' + this._item_count);
 			
